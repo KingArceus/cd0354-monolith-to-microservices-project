@@ -28,7 +28,6 @@ npm install .
 ### Build and Run the Project
 ```bash
 ionic build
-$env:NODE_OPTIONS = "--openssl-legacy-provider"
 ionic serve
 ```
 > Note: If you don't have Ionic CLI installed already, revisit the prerequisites in the previous section for setup instructions.
