@@ -9,15 +9,15 @@ script:
   - docker build -t udagram-reverseproxy ./udagram-reverseproxy
 
 ## Tagging
-  - docker tag udagram-api-feed kingarceus/udagram-api-feed:v1
-  - docker tag udagram-api-user kingarceus/udagram-api-user:v1
+  - docker tag udagram-api-feed kingarceus/udagram-api-feed:v2
+  - docker tag udagram-api-user kingarceus/udagram-api-user:v2
   - docker tag udagram-frontend kingarceus/udagram-frontend:v2
   - docker tag udagram-reverseproxy kingarceus/udagram-reverseproxy:v1
   
 after_success:
 ## Push
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push kingarceus/udagram-api-feed:v1
-  - docker push kingarceus/udagram-api-user:v1
+  - docker push kingarceus/udagram-api-feed:v2
+  - docker push kingarceus/udagram-api-user:v2
   - docker push kingarceus/udagram-frontend:v2
   - docker push kingarceus/udagram-reverseproxy:v1
