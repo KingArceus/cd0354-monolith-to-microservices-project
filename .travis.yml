@@ -1,6 +1,5 @@
 language: node_js
 node_js: 16.20.2
-```bash
 script:
 ## Build
   - docker build -t udagram-api-feed ./udagram-api-feed
