@@ -1,23 +1,23 @@
 language: node_js
 node_js: 16.20.2
-
+```bash
 script:
 ## Build
   - docker build -t udagram-api-feed ./udagram-api-feed
   - docker build -t udagram-api-user ./udagram-api-user
   - docker build -t udagram-frontend ./udagram-frontend
   - docker build -t udagram-reverseproxy ./udagram-reverseproxy
-
+```bash
 ## Tagging
-  - docker tag udagram-api-feed kingarceus/udagram-api-feed:v2
-  - docker tag udagram-api-user kingarceus/udagram-api-user:v2
-  - docker tag udagram-frontend kingarceus/udagram-frontend:v2
+  - docker tag udagram-api-feed kingarceus/udagram-api-feed:v3
+  - docker tag udagram-api-user kingarceus/udagram-api-user:v3
+  - docker tag udagram-frontend kingarceus/udagram-frontend:v3
   - docker tag udagram-reverseproxy kingarceus/udagram-reverseproxy:v1
-  
+```bash
 after_success:
 ## Push
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push kingarceus/udagram-api-feed:v2
-  - docker push kingarceus/udagram-api-user:v2
-  - docker push kingarceus/udagram-frontend:v2
+  - docker push kingarceus/udagram-api-feed:v3
+  - docker push kingarceus/udagram-api-user:v3
+  - docker push kingarceus/udagram-frontend:v3
   - docker push kingarceus/udagram-reverseproxy:v1
