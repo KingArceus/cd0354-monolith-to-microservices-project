@@ -17,6 +17,7 @@ spec:
       containers:
       - name: backend-feed
         image: kingarceus/udagram-api-feed:v4
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         resources:

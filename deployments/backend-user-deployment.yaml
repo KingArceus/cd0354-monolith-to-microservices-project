@@ -17,6 +17,7 @@ spec:
       containers:
       - name: backend-user
         image: kingarceus/udagram-api-user:v4
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         resources:
