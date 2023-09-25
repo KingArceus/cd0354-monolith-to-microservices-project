@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  AWS_BUCKET: arn:aws:s3:::khang-udacity-project3
+  AWS_BUCKET: khang-udacity-project3
   AWS_PROFILE: default
   AWS_REGION: eu-east-1
   JWT_SECRET: khang
