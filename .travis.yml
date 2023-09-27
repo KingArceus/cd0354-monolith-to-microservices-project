@@ -1,5 +1,18 @@
-language: node_js
-node_js: 16.20.2
+language: minimal
+
+services:
+  - docker
+  
+env:
+  - DOCKER_COMPOSE_VERSION=1.23.2
+  
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  
+
 script:
 ## Build
   - docker build -t udagram-api-feed ./udagram-api-feed
@@ -8,15 +21,15 @@ script:
   - docker build -t udagram-reverseproxy ./udagram-reverseproxy
 
 ## Tagging
-  - docker tag udagram-api-feed kingarceus/udagram-api-feed:v4
-  - docker tag udagram-api-user kingarceus/udagram-api-user:v4
-  - docker tag udagram-frontend kingarceus/udagram-frontend:v4
-  - docker tag udagram-reverseproxy kingarceus/udagram-reverseproxy:v1
+  - docker tag udagram-api-feed kingarceus/udagram-api-feed:vx
+  - docker tag udagram-api-user kingarceus/udagram-api-user:vx
+  - docker tag udagram-frontend kingarceus/udagram-frontend:vx
+  - docker tag udagram-reverseproxy kingarceus/udagram-reverseproxy:vx
 
 after_success:
 ## Push
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push kingarceus/udagram-api-feed:v4
-  - docker push kingarceus/udagram-api-user:v4
-  - docker push kingarceus/udagram-frontend:v4
-  - docker push kingarceus/udagram-reverseproxy:v1
+  - docker push kingarceus/udagram-api-feed:vx
+  - docker push kingarceus/udagram-api-user:vx
+  - docker push kingarceus/udagram-frontend:vx
+  - docker push kingarceus/udagram-reverseproxy:vx

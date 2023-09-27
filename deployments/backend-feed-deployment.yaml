@@ -3,23 +3,21 @@ kind: Deployment
 metadata:
   name: backend-feed
   labels:
-    app: backend-feed
+    service: backend-feed
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend-feed
+      service: backend-feed
   template:
     metadata:
       labels:
-        app: backend-feed
+        service: backend-feed
     spec:
       containers:
       - name: backend-feed
-        image: kingarceus/udagram-api-feed:v4
+        image: kingarceus/udagram-api-feed:vx
         imagePullPolicy: Always
-        ports:
-        - containerPort: 80
         resources:
           requests:
             memory: "1024Mi"
@@ -73,17 +71,12 @@ spec:
             secretKeyRef:
               name: env-secret
               key: POSTGRES_USERNAME
-        - name: NODE_OPTIONS
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: NODE_OPTIONS
         volumeMounts:
         - name: aws-secret
           mountPath: "/root/.aws/"
           readOnly: true
       restartPolicy: Always
       volumes:
-        - name: aws-secret
-          secret:
-            secretName: aws-secret
+      - name: aws-secret
+        secret:
+          secretName: aws-secret
