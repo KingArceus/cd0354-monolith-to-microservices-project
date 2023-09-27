@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  AWS_BUCKET: khang-udacity-project3
+  AWS_BUCKET: arn:aws:s3:::khang-udacity-project3
   AWS_PROFILE: default
   AWS_REGION: eu-east-1
   JWT_SECRET: khang
   POSTGRES_DB: postgres
-  POSTGRES_HOST: khangudacityproject3.cojdsnqmggnw.us-east-1.rds.amazonaws.com
-  URL: http://localhost:8100
+  POSTGRES_HOST: khangudacityproject3.c80xsfao9si8.us-east-1.rds.amazonaws.com
+  URL: http://ac2c94bcee1be40cdbeb8396010f4273-1446202222.us-east-1.elb.amazonaws.com:8100
   NODE_OPTIONS: --max-old-space-size=1024
 metadata:
   name: env-config
