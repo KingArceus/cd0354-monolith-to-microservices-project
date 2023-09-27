@@ -17,6 +17,7 @@ spec:
       containers:
       - name: frontend
         image: kingarceus/udagram-frontend:v4
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         resources:
